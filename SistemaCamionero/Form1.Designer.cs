@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.Placas = new System.Windows.Forms.TextBox();
             this.registroCBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.camioneraDataSet = new SistemaCamionero.CamioneraDataSet();
@@ -60,8 +61,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.registroCTableAdapter = new SistemaCamionero.CamioneraDataSetTableAdapters.RegistroCTableAdapter();
             this.Indicador = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.Ticket = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.registroCBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camioneraDataSet)).BeginInit();
@@ -93,6 +94,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.Ticket);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.Placas);
             this.panel1.Controls.Add(this.label5);
@@ -105,6 +107,17 @@
             this.panel1.Size = new System.Drawing.Size(574, 160);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(367, 74);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 36);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Filtrar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Placas
             // 
@@ -333,17 +346,6 @@
             this.Indicador.Text = "000000";
             this.Indicador.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(367, 74);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 36);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Filtrar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -354,6 +356,16 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "KG";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // Ticket
+            // 
+            this.Ticket.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Ticket.Location = new System.Drawing.Point(248, 74);
+            this.Ticket.Name = "Ticket";
+            this.Ticket.Size = new System.Drawing.Size(101, 36);
+            this.Ticket.TabIndex = 7;
+            this.Ticket.Text = "Ticket";
+            this.Ticket.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -430,6 +442,7 @@
         private System.Windows.Forms.Label Indicador;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Ticket;
     }
 }
 

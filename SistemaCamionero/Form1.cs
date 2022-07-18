@@ -46,26 +46,43 @@ namespace SistemaCamionero
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"ERROR");
             }
         }
         void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            if (this.Enabled == true)
+            if (this.Enabled == false)
             {
-                //Thread.Sleep(500);
-                string data = serialPort1.ReadLine();
-                
-                data = data.Replace("KG", "");
-                data = data.Replace("M", "");
-                string cadenaLimpia = data.Replace("\n", string.Empty).Replace("\t", string.Empty).Replace("", "").Replace(" ", "");
-
-                
-                this.BeginInvoke(new DelegadoAcceso(si_DataReceived), new object[] { data });
-                
-
-                
+                MessageBox.Show("Error de comunicación", "ERROR");
             }
+            else {
+                try
+                {
+
+
+                    //Thread.Sleep(500);
+                    string data = serialPort1.ReadLine();
+
+                    data = data.Replace("KG", "");
+                    data = data.Replace("M", "");
+                    string cadenaLimpia = data.Replace("\n", string.Empty).Replace("\t", string.Empty).Replace("", "").Replace(" ", "");
+
+
+                    this.BeginInvoke(new DelegadoAcceso(si_DataReceived), new object[] { data });
+
+
+
+
+
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("El indicador no envia datos", "ERROR");
+                }
+
+            }
+            
         }
         private void si_DataReceived(string accion)
         {
@@ -91,18 +108,48 @@ namespace SistemaCamionero
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string cadena = Indicador.Text;
-            String cadena2;
-            cadena = cadena.Replace("KG", "");
-            cadena2 = cadena.Replace("M","");
-            string cadenaLimpia = cadena2.Replace("\n", string.Empty).Replace("\t", string.Empty).Replace("", "").Replace(" ","");
-            int tara=Int32.Parse(cadenaLimpia);
-            registroCTableAdapter.Entrada(ID.Text, Placas.Text, tara);
-            this.registroCTableAdapter.Fill(this.camioneraDataSet.RegistroC);
+            if (ID.Text == String.Empty || Placas.Text == String.Empty)
+            {
+                MessageBox.Show("El campo ID  o Placas esta vacio", "Advertencia");
+            }
+            else
+            {
+                try
+                {
+                    string cadena = Indicador.Text;
+                    String cadena2;
+                    cadena = cadena.Replace("KG", "");
+                    cadena2 = cadena.Replace("M", "");
+                    string cadenaLimpia = cadena2.Replace("\n", string.Empty).Replace("\t", string.Empty).Replace("", "").Replace(" ", "");
+                    int tara = Int32.Parse(cadenaLimpia);
+                    registroCTableAdapter.Entrada(ID.Text, Placas.Text, tara);
+                    this.registroCTableAdapter.Fill(this.camioneraDataSet.RegistroC);
+                }
+                catch (System.Data.SqlClient.SqlException)
+                {
+
+                    MessageBox.Show("ID duplicado", "ERROR");
+                }
+            }
+
+                        
         }
 
         private void Salida_Click(object sender, EventArgs e)
         {
+            if (ID.Text == String.Empty)
+            {
+                MessageBox.Show("Campo ID vacio, favor de llenar el campo para realizar la salida", "Advertencia");
+            }
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             string cadena = Indicador.Text;
             String cadena2;
             cadena = cadena.Replace("KG", "");
@@ -136,6 +183,10 @@ namespace SistemaCamionero
                 Tara.Text = registro["PTara"].ToString();
                 Bruto.Text = registro["PBruto"].ToString();
                 Neto.Text = registro["PNeto"].ToString();
+            }
+            else 
+            {
+                MessageBox.Show("ID no encontrado", "Advertencia");
             }
             conexion.Close();
             Placas.Text = "";
