@@ -2,9 +2,8 @@
 {
 
 
-    partial class CamioneraDataSet
+    partial class CamioneraDataSetFinal
     {
     }
 }
-
 

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
 using System.Data.SqlClient;
+using System.Drawing.Printing;
 
 namespace SistemaCamionero
 {
@@ -20,11 +21,14 @@ namespace SistemaCamionero
         public Form1()
         {
             InitializeComponent();
+           // dataGridView1.Columns["ID"].SortMode = DataGridViewColumnSortMode.NotSortable;
             
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'camioneraDataSetFinal.RegistroC' Puede moverla o quitarla según sea necesario.
+            this.registroCTableAdapter1.Fill(this.camioneraDataSetFinal.RegistroC);
             // TODO: esta línea de código carga datos en la tabla 'camioneraDataSet.RegistroC' Puede moverla o quitarla según sea necesario.
             this.registroCTableAdapter.Fill(this.camioneraDataSet.RegistroC);
             Fecha.Text = DateTime.Now.ToString("d");
@@ -122,8 +126,10 @@ namespace SistemaCamionero
                     cadena2 = cadena.Replace("M", "");
                     string cadenaLimpia = cadena2.Replace("\n", string.Empty).Replace("\t", string.Empty).Replace("", "").Replace(" ", "");
                     int tara = Int32.Parse(cadenaLimpia);
-                    registroCTableAdapter.Entrada(ID.Text, Placas.Text, tara);
-                    this.registroCTableAdapter.Fill(this.camioneraDataSet.RegistroC);
+                    registroCTableAdapter1.Entrada(ID.Text, Placas.Text, tara, Fecha.Text, Hora.Text);
+                    this.registroCTableAdapter1.Fill(this.camioneraDataSetFinal.RegistroC);
+                    Placas.Text = "";
+                    ID.Text = "";
                 }
                 catch (System.Data.SqlClient.SqlException)
                 {
@@ -160,13 +166,42 @@ namespace SistemaCamionero
             int N = B - T;
             Bruto.Text = B.ToString();
             Neto.Text = N.ToString();
-            registroCTableAdapter.Salida(N, B, ID.Text, ID.Text);
-            this.registroCTableAdapter.Fill(this.camioneraDataSet.RegistroC);
-
-
+            registroCTableAdapter1.Salida(Hora.Text, B, N, textFiltrar.Text, textFiltrar.Text);
+            //checkTicket.Checked = false;
+            //textFiltrar.Text = string.Empty;
+            this.registroCTableAdapter1.Fill(this.camioneraDataSetFinal.RegistroC);
+            //this.textFiltrar.Text = "";
+            
+            
+            printDocument1 = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            printDocument1.PrinterSettings = ps;
+            printDocument1.PrintPage += Imprimir;
+            printDocument1.Print();
             
 
+
         }
+        private void Imprimir(object sender, PrintPageEventArgs e)
+        {
+            string i = ID.Text, P = Placas.Text, T = Tara.Text, B = Bruto.Text, N = Neto.Text, f = Fecha.Text, h = Hora.Text;
+            Font font = new Font("Arial", 12, FontStyle.Regular, GraphicsUnit.Point);
+            int width = 600;
+            
+            e.Graphics.DrawString("Sistema de Pesaje Tracto", font, Brushes.Black, new RectangleF(10, 20, width, 20));
+            e.Graphics.DrawString("Fecha:  " + f, font, Brushes.Black, new RectangleF(10, 60, width, 20));
+            e.Graphics.DrawString("Hora Entrada:  " + h, font, Brushes.Black, new RectangleF(10, 80, width, 20));
+            e.Graphics.DrawString("ID Camion  " + i, font, Brushes.Black, new RectangleF(10, 100, width, 20));
+            e.Graphics.DrawString("Placas:  " + P, font, Brushes.Black, new RectangleF(10, 120, width, 20));
+            e.Graphics.DrawString("Peso de Entrada:  " + T + "Kg", font, Brushes.Black, new RectangleF(10, 140, width, 20));
+            e.Graphics.DrawString("-----------------------------------------", font, Brushes.Black, new RectangleF(10, 180, width, 20));
+            e.Graphics.DrawString("Fecha:  "+ f, font, Brushes.Black, new RectangleF(10, 200, width, 20));
+            e.Graphics.DrawString("Hora Salida:  " + h, font, Brushes.Black, new RectangleF(10, 220, width, 20));
+            e.Graphics.DrawString("Peso Bruto:  " + B +"Kg", font, Brushes.Black, new RectangleF(10, 240, width, 20));
+            e.Graphics.DrawString("Peso de Salida:  " + N +"Kg", font, Brushes.Black, new RectangleF(10, 260, width, 20));
+
+        }
+
 
         private void ID_KeyUp(object sender, KeyEventArgs e)
         { }
@@ -183,15 +218,114 @@ namespace SistemaCamionero
                 Tara.Text = registro["PTara"].ToString();
                 Bruto.Text = registro["PBruto"].ToString();
                 Neto.Text = registro["PNeto"].ToString();
+                
             }
             else 
             {
                 MessageBox.Show("ID no encontrado", "Advertencia");
             }
             conexion.Close();
-            Placas.Text = "";
-         }
+            //Placas.Text = "";
+            this.Placas.Text = "";
+            this.Tara.Text = "";
+            this.Neto.Text = "";
+            this.Bruto.Text = "";
+
         }
+
+        private void checkTicket_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkTicket.Checked)
+            {
+                textFiltrar.Visible = true;
+            }else
+            {
+                textFiltrar.Visible = false;
+                ID.Text = "";
+
+
+            }
+        }
+
+        private void textFiltrar_KeyUp(object sender, KeyEventArgs e)
+        {
+            conexion.Open();
+
+            SqlCommand cmd = conexion.CreateCommand();
+
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM RegistroC where ID like ('" + textFiltrar.Text + "%')";
+            cmd.ExecuteNonQuery();
+
+             DataTable dt = new DataTable();
+             SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+             da.Fill(dt);
+
+             dataGridView1.DataSource = dt;
+            //SqlDataReader registro = cmd.ExecuteReader();
+            //this.registroCTableAdapter1.Fill(this.camioneraDataSetFinal.RegistroC);
+
+
+
+
+            conexion.Close();
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string id = this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                string Pl = this.dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                string PT = this.dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                string Fech = this.dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                string HoraE = this.dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                string HoraS = this.dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+                string PB = this.dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+                string PN = this.dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
+
+                ID.Text = id;
+                textFiltrar.Text = id;
+                Placas.Text = Pl;
+                Tara.Text = PT;
+                Neto.Text = PN;
+                Bruto.Text = PB;
+
+
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+
+                MessageBox.Show("Favor de seleccionar la primera columna para continuar", "AVISO");
+            }
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reImpresiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReImpresion R = new ReImpresion();
+            R.Show();
+        }
+
+        private void Borrar_Click(object sender, EventArgs e)
+        {
+            ID.Text = "";
+            Placas.Text = "";
+            Tara.Text = "";
+            Bruto.Text = "";
+            Neto.Text = "";
+            textFiltrar.Text = "";
+        }
+
+        
+    }
     }
 
 
