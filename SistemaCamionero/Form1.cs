@@ -106,7 +106,7 @@ namespace SistemaCamionero
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string v = DateTime.Now.ToString("T");
+            string v = DateTime.Now.ToString("t");
             Hora.Text = v;
         }
 
@@ -189,16 +189,16 @@ namespace SistemaCamionero
             int width = 600;
             
             e.Graphics.DrawString("Sistema de Pesaje Tracto", font, Brushes.Black, new RectangleF(10, 20, width, 20));
-            e.Graphics.DrawString("Fecha:  " + f, font, Brushes.Black, new RectangleF(10, 60, width, 20));
-            e.Graphics.DrawString("Hora Entrada:  " + h, font, Brushes.Black, new RectangleF(10, 80, width, 20));
-            e.Graphics.DrawString("ID Camion  " + i, font, Brushes.Black, new RectangleF(10, 100, width, 20));
+            e.Graphics.DrawString("ID Camion  " + i, font, Brushes.Black, new RectangleF(10, 60, width, 20));
+            e.Graphics.DrawString("Fecha:  " + f, font, Brushes.Black, new RectangleF(10, 80, width, 20));
+            e.Graphics.DrawString("Hora Entrada:  " + h, font, Brushes.Black, new RectangleF(170, 80, width, 20));
+            e.Graphics.DrawString("Peso de Entrada:  " + T + "Kg", font, Brushes.Black, new RectangleF(10, 100, width, 20));
             e.Graphics.DrawString("Placas:  " + P, font, Brushes.Black, new RectangleF(10, 120, width, 20));
-            e.Graphics.DrawString("Peso de Entrada:  " + T + "Kg", font, Brushes.Black, new RectangleF(10, 140, width, 20));
-            e.Graphics.DrawString("-----------------------------------------", font, Brushes.Black, new RectangleF(10, 180, width, 20));
-            e.Graphics.DrawString("Fecha:  "+ f, font, Brushes.Black, new RectangleF(10, 200, width, 20));
-            e.Graphics.DrawString("Hora Salida:  " + h, font, Brushes.Black, new RectangleF(10, 220, width, 20));
-            e.Graphics.DrawString("Peso Bruto:  " + B +"Kg", font, Brushes.Black, new RectangleF(10, 240, width, 20));
-            e.Graphics.DrawString("Peso de Salida:  " + N +"Kg", font, Brushes.Black, new RectangleF(10, 260, width, 20));
+            e.Graphics.DrawString("-----------------------------------------", font, Brushes.Black, new RectangleF(10, 160, width, 20));
+            e.Graphics.DrawString("Hora Salida:  "+ h, font, Brushes.Black, new RectangleF(10, 200, width, 20));
+            e.Graphics.DrawString("Peso Salida:  " + N, font, Brushes.Black, new RectangleF(10, 220, width, 20));
+            e.Graphics.DrawString("Peso Gross:  " + B +"Kg", font, Brushes.Black, new RectangleF(190, 220, width, 20));
+            
 
         }
 

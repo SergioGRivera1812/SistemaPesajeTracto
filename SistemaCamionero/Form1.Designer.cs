@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Borrar = new System.Windows.Forms.Button();
             this.textFiltrar = new System.Windows.Forms.TextBox();
             this.checkTicket = new System.Windows.Forms.CheckBox();
             this.Placas = new System.Windows.Forms.TextBox();
@@ -40,6 +41,8 @@
             this.Salida = new System.Windows.Forms.Button();
             this.Entrada = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.TextBox();
+            this.registroCBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.camioneraDataSet = new SistemaCamionero.CamioneraDataSet();
             this.label4 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.label6 = new System.Windows.Forms.Label();
@@ -71,19 +74,16 @@
             this.registroCBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.camioneraDataSetFinal = new SistemaCamionero.CamioneraDataSetFinal();
             this.registroCTableAdapter1 = new SistemaCamionero.CamioneraDataSetFinalTableAdapters.RegistroCTableAdapter();
-            this.registroCBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.camioneraDataSet = new SistemaCamionero.CamioneraDataSet();
             this.registroCTableAdapter = new SistemaCamionero.CamioneraDataSetTableAdapters.RegistroCTableAdapter();
-            this.Borrar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.registroCBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camioneraDataSet)).BeginInit();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registroCBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camioneraDataSetFinal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.registroCBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camioneraDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -124,6 +124,17 @@
             this.panel1.Size = new System.Drawing.Size(530, 148);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // Borrar
+            // 
+            this.Borrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Borrar.Location = new System.Drawing.Point(352, 85);
+            this.Borrar.Name = "Borrar";
+            this.Borrar.Size = new System.Drawing.Size(101, 36);
+            this.Borrar.TabIndex = 9;
+            this.Borrar.Text = "Borrar";
+            this.Borrar.UseVisualStyleBackColor = true;
+            this.Borrar.Click += new System.EventHandler(this.Borrar_Click);
             // 
             // textFiltrar
             // 
@@ -197,6 +208,16 @@
             this.ID.Name = "ID";
             this.ID.Size = new System.Drawing.Size(100, 31);
             this.ID.TabIndex = 1;
+            // 
+            // registroCBindingSource
+            // 
+            this.registroCBindingSource.DataMember = "RegistroC";
+            this.registroCBindingSource.DataSource = this.camioneraDataSet;
+            // 
+            // camioneraDataSet
+            // 
+            this.camioneraDataSet.DataSetName = "CamioneraDataSet";
+            this.camioneraDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label4
             // 
@@ -293,7 +314,7 @@
             // Indicador
             // 
             this.Indicador.AutoSize = true;
-            this.Indicador.BackColor = System.Drawing.Color.White;
+            this.Indicador.BackColor = System.Drawing.Color.Black;
             this.Indicador.Font = new System.Drawing.Font("digital display tfb", 90F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Indicador.ForeColor = System.Drawing.Color.Red;
             this.Indicador.Location = new System.Drawing.Point(3, 8);
@@ -306,11 +327,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("digital display tfb", 90F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(427, 14);
+            this.label2.Location = new System.Drawing.Point(435, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 125);
+            this.label2.Size = new System.Drawing.Size(82, 57);
             this.label2.TabIndex = 16;
             this.label2.Text = "KG";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -318,7 +339,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Indicador);
             this.panel2.Controls.Add(this.label2);
@@ -345,7 +366,6 @@
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
             this.inicioToolStripMenuItem.Size = new System.Drawing.Size(70, 29);
             this.inicioToolStripMenuItem.Text = "Inicio";
-//            this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
             // 
             // reImpresiónToolStripMenuItem
             // 
@@ -449,30 +469,9 @@
             // 
             this.registroCTableAdapter1.ClearBeforeFill = true;
             // 
-            // registroCBindingSource
-            // 
-            this.registroCBindingSource.DataMember = "RegistroC";
-            this.registroCBindingSource.DataSource = this.camioneraDataSet;
-            // 
-            // camioneraDataSet
-            // 
-            this.camioneraDataSet.DataSetName = "CamioneraDataSet";
-            this.camioneraDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // registroCTableAdapter
             // 
             this.registroCTableAdapter.ClearBeforeFill = true;
-            // 
-            // Borrar
-            // 
-            this.Borrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Borrar.Location = new System.Drawing.Point(352, 85);
-            this.Borrar.Name = "Borrar";
-            this.Borrar.Size = new System.Drawing.Size(101, 36);
-            this.Borrar.TabIndex = 9;
-            this.Borrar.Text = "Borrar";
-            this.Borrar.UseVisualStyleBackColor = true;
-            this.Borrar.Click += new System.EventHandler(this.Borrar_Click);
             // 
             // Form1
             // 
@@ -508,6 +507,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.registroCBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camioneraDataSet)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -516,8 +517,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.registroCBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.camioneraDataSetFinal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.registroCBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.camioneraDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
