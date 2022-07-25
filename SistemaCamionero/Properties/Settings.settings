@@ -10,5 +10,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-4GN06VU;Initial Catalog=Camionera;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="Puerto" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COM5</Value>
+    </Setting>
+    <Setting Name="Baudio" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9600</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

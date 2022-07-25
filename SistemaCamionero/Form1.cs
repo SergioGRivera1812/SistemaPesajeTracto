@@ -11,6 +11,7 @@ using System.IO.Ports;
 using System.Threading;
 using System.Data.SqlClient;
 using System.Drawing.Printing;
+using SistemaCamionero.Properties;
 
 namespace SistemaCamionero
 {
@@ -21,7 +22,9 @@ namespace SistemaCamionero
         public Form1()
         {
             InitializeComponent();
-           // dataGridView1.Columns["ID"].SortMode = DataGridViewColumnSortMode.NotSortable;
+            // dataGridView1.Columns["ID"].SortMode = DataGridViewColumnSortMode.NotSortable;
+            
+            
             
         }
 
@@ -37,16 +40,26 @@ namespace SistemaCamionero
             Neto.Text = "";
             Tara.Text = "";
             Bruto.Text = "";
+            Configuracion c = new Configuracion();
+            c.Configuracion_Load(sender, e);
+            string P = c.textPuerto.Text;
+            Settings.Default.Puerto = P;
+            string B = c.textBaudio.Text;
+            Settings.Default.Baudio = B;
+            int Bau = Int32.Parse(B);
+
+            
 
             try
             {
-                serialPort1 = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
+                serialPort1 = new SerialPort(P, Bau, Parity.None, 8, StopBits.One);
                 serialPort1.Handshake = Handshake.None;
                 serialPort1.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
                 serialPort1.ReadTimeout = 500;
                 serialPort1.WriteTimeout = 500;
                 serialPort1.Open();
-                serialPort1.Write("0P");
+                serialPort1.Write("P");
+                
             }
             catch (Exception ex)
             {
@@ -91,6 +104,7 @@ namespace SistemaCamionero
         private void si_DataReceived(string accion)
         {
             Indicador.Text = accion;
+            
         
         }
 
@@ -324,7 +338,11 @@ namespace SistemaCamionero
             textFiltrar.Text = "";
         }
 
-        
+        private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Configuracion c = new Configuracion();
+            c.Show();
+        }
     }
     }
 

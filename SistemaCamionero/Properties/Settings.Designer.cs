@@ -32,5 +32,29 @@ namespace SistemaCamionero.Properties {
                 return ((string)(this["CamioneraConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM5")]
+        public string Puerto {
+            get {
+                return ((string)(this["Puerto"]));
+            }
+            set {
+                this["Puerto"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9600")]
+        public string Baudio {
+            get {
+                return ((string)(this["Baudio"]));
+            }
+            set {
+                this["Baudio"] = value;
+            }
+        }
     }
 }

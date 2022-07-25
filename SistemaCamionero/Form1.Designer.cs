@@ -75,6 +75,7 @@
             this.camioneraDataSetFinal = new SistemaCamionero.CamioneraDataSetFinal();
             this.registroCTableAdapter1 = new SistemaCamionero.CamioneraDataSetFinalTableAdapters.RegistroCTableAdapter();
             this.registroCTableAdapter = new SistemaCamionero.CamioneraDataSetTableAdapters.RegistroCTableAdapter();
+            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.registroCBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camioneraDataSet)).BeginInit();
@@ -361,7 +362,8 @@
             // inicioToolStripMenuItem
             // 
             this.inicioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reImpresiónToolStripMenuItem});
+            this.reImpresiónToolStripMenuItem,
+            this.configuraciónToolStripMenuItem});
             this.inicioToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
             this.inicioToolStripMenuItem.Size = new System.Drawing.Size(70, 29);
@@ -370,7 +372,7 @@
             // reImpresiónToolStripMenuItem
             // 
             this.reImpresiónToolStripMenuItem.Name = "reImpresiónToolStripMenuItem";
-            this.reImpresiónToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.reImpresiónToolStripMenuItem.Size = new System.Drawing.Size(204, 30);
             this.reImpresiónToolStripMenuItem.Text = "Reimpresión";
             this.reImpresiónToolStripMenuItem.Click += new System.EventHandler(this.reImpresiónToolStripMenuItem_Click);
             // 
@@ -473,6 +475,13 @@
             // 
             this.registroCTableAdapter.ClearBeforeFill = true;
             // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(204, 30);
+            this.configuraciónToolStripMenuItem.Text = "Configuración";
+            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -569,6 +578,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pBrutoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pNetoDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button Borrar;
+        private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
     }
 }
 
