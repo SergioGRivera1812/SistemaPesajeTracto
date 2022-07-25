@@ -163,35 +163,35 @@ namespace SistemaCamionero
             }
             try
             {
-
+                string cadena = Indicador.Text;
+                String cadena2;
+                cadena = cadena.Replace("KG", "");
+                cadena2 = cadena.Replace("M", "");
+                string cadenaLimpia = cadena2.Replace("\n", string.Empty).Replace("\t", string.Empty).Replace("", "").Replace(" ", "");
+                int B = Int32.Parse(cadenaLimpia);
+                int T = Int32.Parse(Tara.Text);
+                int N = B - T;
+                Bruto.Text = B.ToString();
+                Neto.Text = N.ToString();
+                registroCTableAdapter1.Salida(Hora.Text, B, N, textFiltrar.Text, textFiltrar.Text);
+                //checkTicket.Checked = false;
+                //textFiltrar.Text = string.Empty;
+                this.registroCTableAdapter1.Fill(this.camioneraDataSetFinal.RegistroC);
+                //this.textFiltrar.Text = "";
+                printDocument1 = new PrintDocument();
+                PrinterSettings ps = new PrinterSettings();
+                printDocument1.PrinterSettings = ps;
+                printDocument1.PrintPage += Imprimir;
+                printDocument1.Print();
             }
-            catch (Exception)
+            catch (System.FormatException)
             {
 
-                throw;
+                MessageBox.Show("Acción invalida", "ERROR");
             }
-            string cadena = Indicador.Text;
-            String cadena2;
-            cadena = cadena.Replace("KG", "");
-            cadena2 = cadena.Replace("M", "");
-            string cadenaLimpia = cadena2.Replace("\n", string.Empty).Replace("\t", string.Empty).Replace("", "").Replace(" ", "");
-            int B = Int32.Parse(cadenaLimpia);
-            int T = Int32.Parse(Tara.Text);
-            int N = B - T;
-            Bruto.Text = B.ToString();
-            Neto.Text = N.ToString();
-            registroCTableAdapter1.Salida(Hora.Text, B, N, textFiltrar.Text, textFiltrar.Text);
-            //checkTicket.Checked = false;
-            //textFiltrar.Text = string.Empty;
-            this.registroCTableAdapter1.Fill(this.camioneraDataSetFinal.RegistroC);
-            //this.textFiltrar.Text = "";
             
             
-            printDocument1 = new PrintDocument();
-            PrinterSettings ps = new PrinterSettings();
-            printDocument1.PrinterSettings = ps;
-            printDocument1.PrintPage += Imprimir;
-            printDocument1.Print();
+           
             
 
 

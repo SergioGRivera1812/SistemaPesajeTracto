@@ -60,6 +60,7 @@ namespace SistemaCamionero
         private void Aceptar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            MessageBox.Show("Para efectuar los cambios favor de reiniciar la aplicación", "AVISO");
         }
 
         private void Configuracion_FormClosed(object sender, FormClosedEventArgs e)
