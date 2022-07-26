@@ -158,6 +158,7 @@
             this.textHS.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textHS.Location = new System.Drawing.Point(120, 250);
             this.textHS.Name = "textHS";
+            this.textHS.ReadOnly = true;
             this.textHS.Size = new System.Drawing.Size(100, 29);
             this.textHS.TabIndex = 16;
             // 
@@ -166,6 +167,7 @@
             this.textHE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textHE.Location = new System.Drawing.Point(120, 203);
             this.textHE.Name = "textHE";
+            this.textHE.ReadOnly = true;
             this.textHE.Size = new System.Drawing.Size(100, 29);
             this.textHE.TabIndex = 16;
             // 
@@ -194,6 +196,7 @@
             this.textFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textFecha.Location = new System.Drawing.Point(120, 157);
             this.textFecha.Name = "textFecha";
+            this.textFecha.ReadOnly = true;
             this.textFecha.Size = new System.Drawing.Size(100, 29);
             this.textFecha.TabIndex = 14;
             // 
@@ -222,6 +225,7 @@
             this.Neto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Neto.Location = new System.Drawing.Point(119, 347);
             this.Neto.Name = "Neto";
+            this.Neto.ReadOnly = true;
             this.Neto.Size = new System.Drawing.Size(100, 29);
             this.Neto.TabIndex = 10;
             // 
@@ -230,6 +234,7 @@
             this.Bruto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Bruto.Location = new System.Drawing.Point(119, 298);
             this.Bruto.Name = "Bruto";
+            this.Bruto.ReadOnly = true;
             this.Bruto.Size = new System.Drawing.Size(100, 29);
             this.Bruto.TabIndex = 12;
             // 
@@ -238,6 +243,7 @@
             this.Tara.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tara.Location = new System.Drawing.Point(119, 112);
             this.Tara.Name = "Tara";
+            this.Tara.ReadOnly = true;
             this.Tara.Size = new System.Drawing.Size(100, 29);
             this.Tara.TabIndex = 8;
             // 
@@ -266,6 +272,7 @@
             this.Placas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Placas.Location = new System.Drawing.Point(119, 68);
             this.Placas.Name = "Placas";
+            this.Placas.ReadOnly = true;
             this.Placas.Size = new System.Drawing.Size(100, 29);
             this.Placas.TabIndex = 6;
             // 
@@ -284,6 +291,7 @@
             this.ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ID.Location = new System.Drawing.Point(119, 20);
             this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             this.ID.Size = new System.Drawing.Size(100, 29);
             this.ID.TabIndex = 4;
             // 
