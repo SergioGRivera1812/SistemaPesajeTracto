@@ -343,6 +343,11 @@ namespace SistemaCamionero
             Configuracion c = new Configuracion();
             c.Show();
         }
+
+        private void textFiltrar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

@@ -61,6 +61,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reImpresiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +76,6 @@
             this.camioneraDataSetFinal = new SistemaCamionero.CamioneraDataSetFinal();
             this.registroCTableAdapter1 = new SistemaCamionero.CamioneraDataSetFinalTableAdapters.RegistroCTableAdapter();
             this.registroCTableAdapter = new SistemaCamionero.CamioneraDataSetTableAdapters.RegistroCTableAdapter();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.registroCBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.camioneraDataSet)).BeginInit();
@@ -147,6 +147,7 @@
             this.textFiltrar.Size = new System.Drawing.Size(100, 31);
             this.textFiltrar.TabIndex = 8;
             this.textFiltrar.Visible = false;
+            this.textFiltrar.TextChanged += new System.EventHandler(this.textFiltrar_TextChanged);
             this.textFiltrar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textFiltrar_KeyUp);
             // 
             // checkTicket
@@ -376,6 +377,13 @@
             this.reImpresiónToolStripMenuItem.Text = "Reimpresión";
             this.reImpresiónToolStripMenuItem.Click += new System.EventHandler(this.reImpresiónToolStripMenuItem_Click);
             // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(204, 30);
+            this.configuraciónToolStripMenuItem.Text = "Configuración";
+            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::SistemaCamionero.Properties.Resources.istockphoto_1127759852_170667a_modified;
@@ -474,13 +482,6 @@
             // registroCTableAdapter
             // 
             this.registroCTableAdapter.ClearBeforeFill = true;
-            // 
-            // configuraciónToolStripMenuItem
-            // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(204, 30);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
-            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
             // 
             // Form1
             // 
